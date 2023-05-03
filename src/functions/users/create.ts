@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import AWS from "aws-sdk";
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
-const tableName = "your-dynamodb-table-name"; 
+const tableName = "Todos"; 
 // Create CRUD todo
 // Save on dynamo DB
 
