@@ -7,12 +7,24 @@ provider:
   region: ap-southeast-1
 
 functions:
-  Users:
+  addTodo:
     handler: src/functions/users/get.handler
     events:
       - httpApi:
           path: /get
-          method: get
+          method: GET
+  deleteTodo:
+    handler: src/functions/users/delete.handler
+    events:
+      - httpApi:
+          path: /delete/{id}
+          method: DELETE
+  updateTodo:
+    handler: src/functions/users/update.handler
+    events:
+      - httpApi:
+          path: /update/{id}
+          method: PUT
 
 plugins:
   - serverless-offline

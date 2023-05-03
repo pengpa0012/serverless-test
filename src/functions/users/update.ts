@@ -10,6 +10,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
     body: JSON.stringify(
       {
         message: "Go Serverless v3.0! Your function executed successfully!",
+        event
       },
       null,
       2
