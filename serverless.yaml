@@ -8,10 +8,10 @@ provider:
 
 functions:
   Users:
-    handler: src/functions/users/handler.hello
+    handler: src/functions/users/get.handler
     events:
       - httpApi:
-          path: /users
+          path: /get
           method: get
 
 plugins:
