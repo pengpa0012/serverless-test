@@ -5,6 +5,18 @@ provider:
   name: aws
   runtime: nodejs16.x
   region: ap-southeast-1
+custom:
+  tableName: Todos
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
 
 functions:
   createTodo:
@@ -31,6 +43,7 @@ functions:
       - httpApi:
           path: /update/{id}
           method: PUT
+  
 
 plugins:
   - serverless-offline
