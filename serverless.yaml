@@ -8,25 +8,25 @@ provider:
 
 functions:
   createTodo:
-    handler: src/functions/users/create.handler
+    handler: src/functions/users/create.createTodo
     events:
       - httpApi:
           path: /create
           method: POST
   getTodo:
-    handler: src/functions/users/get.handler
+    handler: src/functions/users/get.getTodo
     events:
       - httpApi:
           path: /get
           method: GET
   deleteTodo:
-    handler: src/functions/users/delete.handler
+    handler: src/functions/users/delete.deleteTodo
     events:
       - httpApi:
           path: /delete/{id}
           method: DELETE
   updateTodo:
-    handler: src/functions/users/update.handler
+    handler: src/functions/users/update.updateTodo
     events:
       - httpApi:
           path: /update/{id}
