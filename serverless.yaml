@@ -7,7 +7,13 @@ provider:
   region: ap-southeast-1
 
 functions:
-  addTodo:
+  createTodo:
+    handler: src/functions/users/create.handler
+    events:
+      - httpApi:
+          path: /create
+          method: POST
+  getTodo:
     handler: src/functions/users/get.handler
     events:
       - httpApi:

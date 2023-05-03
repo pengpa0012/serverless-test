@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 // Create CRUD todo
 // Save on dynamo DB
 
-export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const getTodo = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log(event)
 
   return {
