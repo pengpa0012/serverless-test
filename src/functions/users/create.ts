@@ -3,8 +3,6 @@ import AWS from "aws-sdk";
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const tableName = "Todos"; 
-// Create CRUD todo
-// Save on dynamo DB
 
 export const createTodo = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {

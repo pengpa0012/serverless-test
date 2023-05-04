@@ -1,10 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-// Create CRUD todo
-// Save on dynamo DB
 
 export const deleteTodo = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  console.log(event)
-
   return {
     statusCode: 200,
     body: JSON.stringify(

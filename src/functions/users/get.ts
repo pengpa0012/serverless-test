@@ -10,29 +10,17 @@ export const getTodo = async (event: APIGatewayProxyEvent) => {
     TableName: tableName
   };
   
-  dynamoDB.scan(params, (err, data) => {
-    if (err) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify(
-          {
-            message: "Cannot get todos"
-          },
-          null,
-          2
-        ),
-      };
-    } else {
-      return {
-        statusCode: 500,
-        body: JSON.stringify(
-          {
-            todos: data
-          },
-          null,
-          2
-        ),
-      };
-    }
-  });
+  try {
+    const data = await dynamoDB.scan(params).promise();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ todos: data }),
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "Cannot get todos" }),
+    };
+  }
 }; 
