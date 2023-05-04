@@ -1,19 +1,38 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-// Create CRUD todo
-// Save on dynamo DB
+import AWS from "aws-sdk";
 
-export const getTodo = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  console.log(event)
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const tableName = "Todos";
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: "Go Serverless v3.0! Your function executed successfully!",
-        event
-      },
-      null,
-      2
-    ),
+export const getTodo = async (event: APIGatewayProxyEvent) => {
+ 
+  const params = {
+    TableName: tableName
   };
+  
+  dynamoDB.scan(params, (err, data) => {
+    if (err) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(
+          {
+            message: "Cannot get todos"
+          },
+          null,
+          2
+        ),
+      };
+    } else {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(
+          {
+            todos: data
+          },
+          null,
+          2
+        ),
+      };
+    }
+  });
 }; 
