@@ -14,7 +14,7 @@ export const getTodo = async (event: APIGatewayProxyEvent) => {
     const data = await dynamoDB.scan(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify({ todos: data }),
+      body: JSON.stringify({ todos: data.Items }),
     };
   } catch (err) {
     console.error(err);
